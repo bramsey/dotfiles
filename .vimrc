@@ -28,12 +28,13 @@ set incsearch
 set showmatch
 set mat=2
 set hidden
+set scrolloff=3
 
 " Colors and Fonts
 syntax enable
 colorscheme railscasts
 " highlight past 80 chars
-":match DiffAdd '\%>80v.*'
+:match DiffAdd '\%>80v.*'
 source ~/.vim/plugin/matchit.vim
 
 " Text, tab, and indents
@@ -110,7 +111,11 @@ set noswapfile
 set laststatus=2
 
 " Format the status line
-set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
+"set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
+set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\ %{exists('*CapsLockStatusline')?CapsLockStatusline():''}%=%-16(\ %l,%c-%v\ %)%P
+
+" Use javascript plugin for json
+autocmd BufNewFile,BufRead *.json set ft=javascript
 
 " Helper functions
 " Returns true if paste mode is enabled
