@@ -14,9 +14,10 @@ nnoremap ; :
 nnoremap j gj
 nnoremap k gk
 inoremap jj <ESC>
+inoremap { {<CR><CR>}<C-o>k<C-o>S
 
 " NERDTree
-autocmd vimenter * if !argc() | NERDTree | endif
+" autocmd vimenter * if !argc() | NERDTree | endif "start on load
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 map <leader>no :NERDTreeToggle<cr>
@@ -32,6 +33,7 @@ set showmatch
 set mat=2
 set hidden
 set scrolloff=3
+let g:Powerline_symbols = 'fancy'
 
 " Colors and Fonts
 syntax enable
@@ -109,21 +111,10 @@ set noswapfile
 " Status line
 set laststatus=2
 
-" Format the status line
-"set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
-set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\ %{exists('*CapsLockStatusline')?CapsLockStatusline():''}%=%-16(\ %l,%c-%v\ %)%P
-
 " Use javascript plugin for json
 autocmd BufNewFile,BufRead *.json set ft=javascript
 
 " Helper functions
-" Returns true if paste mode is enabled
-function! HasPaste()
-    if &paste
-        return 'PASTE MODE  '
-    en
-    return ''
-endfunction
 
 " Don't close window, when deleting a buffer
 command! Bclose call <SID>BufcloseCloseIt()
