@@ -11,6 +11,9 @@ set clipboard=unnamed
 let mapleader = ","
 let g:mapleader = ","
 nnoremap ; :
+nnoremap j gj
+nnoremap k gk
+inoremap jj <ESC>
 
 " NERDTree
 autocmd vimenter * if !argc() | NERDTree | endif
@@ -32,16 +35,17 @@ set scrolloff=3
 
 " Colors and Fonts
 syntax enable
-colorscheme railscasts
+colorscheme molokai
 " highlight past 80 chars
 :match DiffAdd '\%>80v.*'
 source ~/.vim/plugin/matchit.vim
 
 " Text, tab, and indents
 set expandtab " Spaces instead of tabs
-set shiftwidth=4
-set tabstop=4
+set shiftwidth=2
+set tabstop=2
 set smarttab
+au FileType javascript setl sw=4 sts=4 et
 
 set si " Smart indent
 set ai " auto indent
@@ -72,8 +76,8 @@ map <leader>bd :Bclose<cr>
 map <leader>ba :1,1000 bd!<cr>
 
 nnoremap <Leader>l :ls<CR>
-nnoremap <Leader>b :bp<CR> :NERDTreeFind<CR> <C-W>l<CR>
-nnoremap <Leader>f :bn<CR> :NERDTreeFind<CR> <C-W>l<CR>
+nnoremap <Leader>b :bp<CR>
+nnoremap <Leader>f :bn<CR>
 nnoremap <Leader>g :e#<CR>
 nnoremap <Leader>1 :1b<CR>
 nnoremap <Leader>2 :2b<CR>
@@ -88,11 +92,6 @@ nnoremap <Leader>0 :10b<CR>
 
 " Switch CWD to the directory of the open buffer
 map <leader>cd :cd %:p:h<cr>:pwd<cr>
-
-map <leader>tn :tabnew<cr>
-map <leader>to :tabonly<cr>
-map <leader>tc :tabclose<cr>
-map <leader>tm :tabmove
 
 " Disable highlight when <leader><cr> is pressed
 map <silent> <leader><cr> :noh<cr>
