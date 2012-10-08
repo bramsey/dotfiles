@@ -48,6 +48,7 @@ set shiftwidth=2
 set tabstop=2
 set smarttab
 au FileType javascript setl sw=4 sts=4 et
+au FileType racket setl commentstring=;%s
 
 set si " Smart indent
 set ai " auto indent
