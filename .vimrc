@@ -26,6 +26,7 @@ map <leader>nc :NERDTreeClose<cr>
 " Vim UI
 set ruler
 set number
+set ignorecase
 set smartcase
 set hlsearch
 set incsearch
@@ -52,6 +53,16 @@ au FileType racket setl commentstring=;%s
 
 set si " Smart indent
 set ai " auto indent
+
+" Fold helpers
+set foldmethod=indent
+set foldnestmax=10
+set nofoldenable
+set foldlevel=1
+" space toggles the fold state under the cursor.
+nnoremap <silent><space> :exe 'normal! za'.(foldlevel('.')?'':'l')<cr>
+" <leader>space expands with zO
+map <leader><space> zO
 
 " Visual mode related
 vnoremap <silent> * :call VisualSelection('f')<CR>
