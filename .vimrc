@@ -13,7 +13,7 @@ let g:mapleader = ","
 nnoremap ; :
 nnoremap j gj
 nnoremap k gk
-inoremap jj <ESC>
+inoremap jk <ESC>
 inoremap { {<CR><CR>}<C-o>k<C-o>S
 
 " NERDTree
@@ -115,6 +115,12 @@ set laststatus=2
 " Use javascript plugin for json
 autocmd BufNewFile,BufRead *.json set ft=javascript
 
+" Use html plugin for mustache
+autocmd BufNewFile,BufRead *.mustache set ft=html
+
+" Use css plugin for stylus
+autocmd BufNewFile,BufRead *.styl set ft=css
+
 " Helper functions
 
 " Don't close window, when deleting a buffer
@@ -137,3 +143,17 @@ function! <SID>BufcloseCloseIt()
         execute("bdelete! ".l:currentBufNum)
     endif
 endfunction
+
+" Word processing
+func! WordProcessorMode()
+  setlocal formatoptions=1
+  setlocal noexpandtab
+  setlocal spell spelllang=en_us
+  set complete+=s
+  set formatprg=par
+  setlocal wrap
+  setlocal linebreak
+  :match
+endfu
+com! WP call WordProcessorMode()
+map <leader>sp 1z=
