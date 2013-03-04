@@ -15,6 +15,10 @@ nnoremap j gj
 nnoremap k gk
 inoremap jk <ESC>
 inoremap { {<CR><CR>}<C-o>k<C-o>S
+nmap <CR> :write<CR>
+cabbrev w nope
+nmap s <Leader><Leader>w
+nmap S <Leader><Leader>b
 
 " NERDTree
 " autocmd vimenter * if !argc() | NERDTree | endif "start on load
