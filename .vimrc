@@ -24,6 +24,8 @@ nmap S <Leader><Leader>b
 " autocmd vimenter * if !argc() | NERDTree | endif "start on load
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
+let g:ctrlp_working_path_mode = 0
+
 map <leader>no :NERDTreeToggle<cr>
 map <leader>nc :NERDTreeClose<cr>
 
